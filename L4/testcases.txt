@@ -1,0 +1,82 @@
+Test with valid file:
+
+CLIENT:
+neb45@cci-uc15207 L4> make client HOST=cci-uc15207.cci.drexel.edu PORT=1738
+FILE=home.html
+gcc -g -pthread client.c csapp.c -o client.o
+./client.o cci-uc15207.cci.drexel.edu 1738 home.html
+Built Buffer:
+GET /home.html HTTP/1.1
+Host: cci-uc15207.cci.drexel.edu
+
+
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+<title>CS 283 -- Tiny Web Server</title>
+</head>
+<body>
+<h1>CS 283 Systems Programming</h3>
+<h2>CS 283 -- Tiny Web Server</h1>
+<h3>Hello !!! CK !</h2>
+</body>
+</html>
+
+SERVER:
+neb45@cci-uc15207 L4> make server PORT=1738
+gcc -g -pthread server.c csapp.c -o server.o
+./server.o 1738
+Connected to (localhost, 38820)
+Read request line:
+GET /home.html HTTP/1.1
+
+Request Headers:
+Host: cci-uc15207.cci.drexel.edu
+
+
+
+Test with invalid hostname:
+
+CLIENT:
+neb45@cci-uc15207 L4> make client HOST=dfnsdklfnsd PORT=1738 FILE=home.html
+gcc -g -pthread client.c csapp.c -o client.o
+./client.o dfnsdklfnsd 1738 home.html
+Open_clientfd DNS error: DNS error 1
+
+
+
+Test with invalid port number:
+
+CLIENT:
+neb45@cci-uc15207 L4> make client HOST=cci-uc15207.cci.drexel.edu PORT=32
+FILE=home.html
+gcc -g -pthread client.c csapp.c -o client.o
+./client.o cci-uc15207.cci.drexel.edu 32 home.html
+Open_clientfd Unix error: Connection refused
+
+
+
+Test with invalid file:
+
+CLIENT:
+neb45@cci-uc15207 L4> make client HOST=cci-uc15207.cci.drexel.edu PORT=1740
+FILE=invalid.html
+gcc -g -pthread client.c csapp.c -o client.o
+./client.o cci-uc15207.cci.drexel.edu 1740 invalid.html
+Built Buffer:
+GET /invalid.html HTTP/1.1
+Host: cci-uc15207.cci.drexel.edu
+
+
+Unable to find file ./invalid.html
+
+SERVER:
+neb45@cci-uc15207 L4> make server PORT=1740
+gcc -g -pthread server.c csapp.c -o server.o
+./server.o 1740
+Connected to (localhost, 52142)
+Read request line:
+GET /invalid.html HTTP/1.1
+
+Request Headers:
+Host: cci-uc15207.cci.drexel.edu

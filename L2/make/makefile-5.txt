@@ -1,0 +1,38 @@
+# Specify the name of the executable, "test" and store in the variable PROG
+PROG=	test
+
+# Create the list of object files that will be compiled into the executable
+# file. 
+OBJS=	one.o main.o two.o three.o
+#CFLAGS=	-Wall -g
+
+# Create a target called "all" that depends on the target specified in the
+# PROG variable.
+all: ${PROG}
+
+# Create a target that is named as in the variable PROG. The dependency list
+# is the contents of the OBJS variable. This target will create the final
+# executable file
+${PROG}: ${OBJS}
+	# Output that the "test" target ($@, which is the target variable PROG)
+	# depends on the object files ($?, which is specified in the variable
+	# OBJS)
+	@echo $@ depends on $?
+
+	# Compile the object files into a single executable
+	${CC} ${LDFLAGS} ${OBJS} -o ${PROG}
+
+# Create targets for all of the files that end in .o, and each depends on
+# the corresponding .c file, as well as the ext.h and one.h header files.
+# For example, if you have the file "one.o", then the target depends on
+# "one.c", "ext.h" and "one.h" 
+%.o: %.c ext.h one.h
+	# Compile the .c and .h files specified in the dependency list into a
+	# single corresponding object file, with the same name as the .c file
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+# Create a target called clean that will be used to remove all of the files
+# that were created in the make file
+clean:
+	# Remove all of the files that were created during the make process
+	rm -f ${PROG} ${OBJS}

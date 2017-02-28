@@ -1,0 +1,6 @@
+neb45@tux1 H4> make replacestrings DIRECTORY=DirectoryDoesntExist FIRST=ThisIsntFound SECOND=TESTTEST THIRD=ThisIsntFoundEither
+gcc -g replacestrings.c -o replacestrings.o
+./replacestrings.o DirectoryDoesntExist ThisIsntFound TESTTEST ThisIsntFoundEither
+Correcting directory path.
+Traversing directory at path ./DirectoryDoesntExist, looking for text files to replace.
+Can't find directory with path ./DirectoryDoesntExist.

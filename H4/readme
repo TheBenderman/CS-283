@@ -1,0 +1,33 @@
+This program follows the following specifications.
+
+Based on 4 Input parameters
+ - 1st: The Directory Path. Either relative or absolute. If only a name is given,
+ I assume it is relative.
+ - 2nd: The first input string. If this string is found, replace all occurrences
+ of this string with the second input string.
+ - 3rd: The second input string. This is the string used to replace the first
+ input string if it is found.
+ - 4th: The third input string. If the first input string is not found in the file,
+ then look for this string. If this string is found, prepend all occurrences
+ with the first input string. If this string is not found, there is nothing to do.
+
+
+This process is done for all regular files with the file extension .txt in the
+directory indicated by the path in the first command line argument. Each file
+is read into a character buffer, the string is manipulated, and then the
+string is written back to the buffer.
+
+
+Everything should work as documented.
+
+To run my program use the following command, replacing all of the words in
+brackets with your desired values:
+  make replacestrings DIRECTORY=<directory> FIRST=<first> SECOND=<second> THIRD=<third>
+
+
+I have included a directory of test files in the directory called TestFiles. Using
+these files, I have also included a directory of output from my program in a directory
+called TestOutput.
+
+I ran my program using gdb and valgrind, and found no memory leaks or errors that
+should hinder my code from running.

@@ -1,0 +1,7 @@
+Nathan Bender
+CS 283
+L3 - File I/O Programming
+
+In order to run my program, use the makefile that is provided. The makefile variables DIR1 and DIR2 are used to specify the two directories that will be synced together. Please use the command “DIR1=a DIR2=b make sync” to run the program. This will sync the two directories called a and b. The program corrects the file names based upon the names that are provided. If the directories start with a “/”, then the program assumes that the path is an absolute path, and uses the provided paths. If the directories start with a “./” then the program assumes these are relative paths and don’t need to change the paths at all. If the directory paths don’t start with “./” or “/”, then the program appends “./” to the front of the paths and creates them as relative file paths.
+
+To run the program manually, supply the directory paths as the two command line arguments to the C program. The first command line argument is for the directory A and the second command line argument is for the directory B.

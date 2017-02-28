@@ -1,0 +1,35 @@
+# Specify the name of the executable called "test"
+PROG=	test
+
+# Specify the list of object files that will be combined into the
+# executable. 
+OBJS=	one.o main.o two.o three.o
+
+# Specify the flags that will use by the c compiler. "-Wall" turns on a lot
+# of warning flags. This makes it easier for errors and other problems in
+# the C code to be found and relayed to the user. The "-g" option allows for
+# debugging information to be saved so that GDB can be used to analyze the
+# program. 
+CFLAGS=	-Wall -g
+
+# Create a target called all that depends on the executable target
+all: ${PROG}
+
+# Create a target for the executable name specified in the PROG variable,
+# that depends on the object files. When seeing the object files, the
+# makefile knows to compile the corresponding .c files into .o files. E.g:
+# one.c is compiled into one.o
+${PROG}: ${OBJS}
+	# Print to the screen that "test" ($@ which is the target, the value of
+	# $PROG) depends on the list of object files ($? which is the dependency
+	# list, the value of the OBJS variable).
+	@echo $@ depends on $?
+
+	# Compile all of the object files into a single executable
+	${CC} ${LDFLAGS} ${OBJS} -o ${PROG}
+
+# Create a target that will be used to clean all of the files created by the
+# makefile
+clean:
+	# Remove all of the files
+	rm -f ls *.o test

@@ -1,0 +1,50 @@
+# Specify the name of the executable that will be created by the makefile
+# and store it in a variable called PROG
+PROG=	test
+
+# Specify all of the object files that will be linked together into a single
+# executable and stored in a variable called OBJS. These will be all of the
+# object files that the program depends on. Each of these object files will
+# be compiled into a file with the name specified in the PROG variable.
+OBJS=	one.o main.o two.o three.o
+
+# Specify the flags that will passed to the c compiler. "-g" enables
+# debugging information and "-Wall" turns on the warning flags for the c
+# compiler.
+CFLAGS=	-Wall -g
+
+# Create a target called "all" that depends on the target that is specified
+# in the PROG variable. This is the name of the final executable file.
+all: ${PROG}
+
+# Create a target called "test" that was specified in the PROG variable,
+# which depends on all of the object files, and creates a single executable file
+# called "test". Each of the object files will be compiled by the next
+# target.
+${PROG}: ${OBJS}
+	# Output to the screen the message "test" ($@ which equals the target
+	# contents) depends on "one.o two.o three.o main.o" ($? which equals the
+	# dependencies contents) 
+	@echo $@ depends on $?
+
+	# Compile the object files into the executable file
+	${CC} ${LDFLAGS} ${OBJS} -o ${PROG}
+
+# Create a target that compiles each of the c files into their corresponding
+# object files. e.g: one.c compiles into one.o. ".c.o" is shorthand for the
+# target "%.o:%.c", which means that each object file depends on the c file
+# with the same name. 
+# "$@" is the name of the file that is being generated, for example, if the
+# target evalates to "one.o : one.c", then "$@" holds one.o. 
+# "$>" is the first dependency. So if we have the same example as above,
+# then "$>" evaluates to one.c
+.c.o:
+	# Compile the c file into the corresponding object file using the CFLAGS
+	# specified in the CFLags variable
+	$(CC) -c $(CFLAGS) -o $@ $<
+
+# Create a target called clean that will be used to clean up all of the
+# files
+clean:
+	# Remove all of the object files and the executable
+	rm -f ${PROG} ${OBJS}

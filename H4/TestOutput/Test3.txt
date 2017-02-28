@@ -1,0 +1,28 @@
+neb45@tux1 H4> make replacestrings DIRECTORY=TestFiles FIRST=ThisIsntFound SECOND=TESTTEST THIRD=ThisIsntFoundEither
+gcc -g replacestrings.c -o replacestrings.o
+./replacestrings.o TestFiles ThisIsntFound TESTTEST ThisIsntFoundEither
+Correcting directory path.
+Traversing directory at path ./TestFiles, looking for text files to replace.
+Found a text file! Replacing strings in file: T3.txt.
+Reading the file T3.txt into the buffer.
+Replacing the strings in the file T3.txt.
+ThisIsntFound is not found in file. Looking for ThisIsntFoundEither.
+ThisIsntFoundEither is not found either. Nothing to do.
+
+Found a text file! Replacing strings in file: T4.txt.
+Reading the file T4.txt into the buffer.
+Replacing the strings in the file T4.txt.
+ThisIsntFound is not found in file. Looking for ThisIsntFoundEither.
+ThisIsntFoundEither is not found either. Nothing to do.
+
+Found a text file! Replacing strings in file: T2.txt.
+Reading the file T2.txt into the buffer.
+Replacing the strings in the file T2.txt.
+ThisIsntFound is not found in file. Looking for ThisIsntFoundEither.
+ThisIsntFoundEither is not found either. Nothing to do.
+
+Found a text file! Replacing strings in file: T1.txt.
+Reading the file T1.txt into the buffer.
+Replacing the strings in the file T1.txt.
+ThisIsntFound is not found in file. Looking for ThisIsntFoundEither.
+ThisIsntFoundEither is not found either. Nothing to do.

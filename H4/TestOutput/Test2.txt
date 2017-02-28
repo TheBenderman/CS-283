@@ -1,0 +1,40 @@
+neb45@tux1 H4> make replacestrings DIRECTORY=TestFiles FIRST=NotFound SECOND=TESTTEST THIRD=TEST
+gcc -g replacestrings.c -o replacestrings.o
+./replacestrings.o TestFiles NotFound TESTTEST TEST
+Correcting directory path.
+Traversing directory at path ./TestFiles, looking for text files to replace.
+Found a text file! Replacing strings in file: T1.txt.
+Reading the file T1.txt into the buffer.
+Replacing the strings in the file T1.txt.
+NotFound is not found in file. Looking for TEST.
+TEST is found in file. Prepending NotFound to all occurences.
+Done replacing strings in file.
+Putting the new file string back in file T1.txt.
+Writing to file at ./TestFiles/T1.txt.
+
+Found a text file! Replacing strings in file: T3.txt.
+Reading the file T3.txt into the buffer.
+Replacing the strings in the file T3.txt.
+NotFound is not found in file. Looking for TEST.
+TEST is found in file. Prepending NotFound to all occurences.
+Done replacing strings in file.
+Putting the new file string back in file T3.txt.
+Writing to file at ./TestFiles/T3.txt.
+
+Found a text file! Replacing strings in file: T4.txt.
+Reading the file T4.txt into the buffer.
+Replacing the strings in the file T4.txt.
+NotFound is not found in file. Looking for TEST.
+TEST is found in file. Prepending NotFound to all occurences.
+Done replacing strings in file.
+Putting the new file string back in file T4.txt.
+Writing to file at ./TestFiles/T4.txt.
+
+Found a text file! Replacing strings in file: T2.txt.
+Reading the file T2.txt into the buffer.
+Replacing the strings in the file T2.txt.
+NotFound is not found in file. Looking for TEST.
+TEST is found in file. Prepending NotFound to all occurences.
+Done replacing strings in file.
+Putting the new file string back in file T2.txt.
+Writing to file at ./TestFiles/T2.txt.

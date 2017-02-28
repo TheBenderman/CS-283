@@ -1,0 +1,47 @@
+# Run 'make', then 'touch one.h' and 'make' again.
+
+# Specifies the c compiler to be used for compuling the c code
+CC=cc
+
+# A target defined as "all" that depends on the target "one"
+all: one
+
+# A target defined as "one" that depends on the targets one.o, main.o,
+# two.o, three.o. Each of these targets that one depends on are listed below
+# (after this target). This target creates a single executable called one. 
+one: one.o main.o two.o three.o
+	# Compile all of the object files into a single object file called "one".
+	# Can then run ./one to run the program
+	${CC} one.o main.o two.o three.o -o one
+
+# The target "one.o" depends on the files ext.h, one.h and one.c
+one.o: ext.h one.h one.c
+	# Compile the one.c file using the c compiler. This will create the file
+	# one.o
+	${CC} -c one.c
+
+# Create a target called "main.o" that depends on the files ext.h, one.h,
+# and main.c.
+main.o: ext.h one.h main.c
+	# Compile the main.c file using the c compiler into an object file called
+	# main.o
+	${CC} -c main.c
+
+# Create a target called "two.o" that depends on the files one.h and two.c
+two.o: one.h two.c
+	# Compile the two.c file using the c compiler, which will output an
+	# object file called two.o
+	${CC} -c two.c
+
+# Create a target called three.o that depends on the c files one.h and
+# three.c
+three.o: one.h three.c
+	# Compile the three.c file using the c compiler, which will output an
+	# object file called three.o
+	${CC} -c three.c
+
+# Create a target called clean that can be used to clean up all of the files
+# produced by the makefiles.
+clean:
+	# Remove the "one" executable and all of the object files
+	rm -f one *.o
