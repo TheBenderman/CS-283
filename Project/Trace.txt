@@ -1,0 +1,198 @@
+neb45@tux5 Project> ./tsh
+tsh> myspin 60 &
+[1] (38818) myspin 60 &
+
+tsh> myspin 60 &
+[2] (38819) myspin 60 &
+
+tsh> myspin 60 &
+[3] (38823) myspin 60 &
+
+tsh> jobs
+[1] (38818) Running myspin 60 &
+[2] (38819) Running myspin 60 &
+[3] (38823) Running myspin 60 &
+tsh> fg 38818
+tsh> jobs
+[3] (38823) Running myspin 60 &
+tsh> jobs
+tsh> myspin 60 &
+[1] (38906) myspin 60 &
+
+tsh> myspin 60 &
+[2] (38908) myspin 60 &
+
+tsh> myspin 60
+^Z[3] (38909) stopped by signal 20.
+tsh> jobs
+[1] (38906) Running myspin 60 &
+[2] (38908) Running myspin 60 &
+[3] (38909) Stopped myspin 60
+tsh> bg 38909
+[3] (38909) myspin 60
+tsh> jobs
+[1] (38906) Running myspin 60 &
+[2] (38908) Running myspin 60 &
+[3] (38909) Running myspin 60
+tsh> jobs
+[2] (38908) Running myspin 60 &
+[3] (38909) Running myspin 60
+tsh> jobs
+[3] (38909) Running myspin 60
+tsh> fg 38909
+fg : 38909: no such job
+tsh> jobs
+tsh> myspin 60 &
+[1] (38923) myspin 60 &
+
+tsh> jobs
+[1] (38923) Running myspin 60 &
+tsh> myspin 60
+^C[2] (38924) terminated by signal 2.
+Job [2] (38924) received signal 2.
+tsh> jobs
+[1] (38923) Running myspin 60 &
+tsh> myspin 60
+^Z[2] (38927) stopped by signal 20.
+tsh> jobs
+[1] (38923) Running myspin 60 &
+[2] (38927) Stopped myspin 60
+tsh> fg 38927
+tsh> jobs
+tsh> myspin 20 &
+[1] (38940) myspin 20 &
+
+tsh> jobs
+[1] (38940) Running myspin 20 &
+tsh> fg 38940
+tsh> jobs
+tsh> /bin/ls
+makefile  myint.c  myspin.c  mysplit.c	mystop.c  tsh.c
+myint	  myspin   mysplit   mystop	tsh
+tsh> /bin/ls &
+[1] (38951) /bin/ls &
+
+tsh> makefile  myint.c  myspin.c  mysplit.c	mystop.c  tsh.c
+myint	  myspin   mysplit   mystop	tsh
+jobs
+tsh> myspin 60 &
+[1] (38955) myspin 60 &
+
+tsh> jobs
+[1] (38955) Running myspin 60 &
+tsh> myspin 60 &
+[2] (38960) myspin 60 &
+
+tsh> jobs
+[1] (38955) Running myspin 60 &
+[2] (38960) Running myspin 60 &
+tsh> myspin 60
+^Z[3] (38963) stopped by signal 20.
+tsh> jobs
+[1] (38955) Running myspin 60 &
+[2] (38960) Running myspin 60 &
+[3] (38963) Stopped myspin 60
+tsh> bg %3
+[3] (38963) myspin 60
+tsh> jobs
+[1] (38955) Running myspin 60 &
+[2] (38960) Running myspin 60 &
+[3] (38963) Running myspin 60
+tsh> fg %1
+tsh> jobs
+[2] (38960) Running myspin 60 &
+[3] (38963) Running myspin 60
+tsh> jobs
+[3] (38963) Running myspin 60
+tsh> jobs
+[3] (38963) Running myspin 60
+tsh> /bin/ls
+makefile  myint.c  myspin.c  mysplit.c	mystop.c  tsh.c
+myint	  myspin   mysplit   mystop	tsh
+tsh> myint 2
+Job [4] (38990) received signal 2.
+tsh> jobs
+tsh> myint 10 &
+[1] (38995) myint 10 &
+
+tsh> myspin 15
+Job [1] (38995) received signal 2.
+tsh> mystop 10 &
+[1] (39003) mystop 10 &
+
+tsh> myspin 2
+tsh> jobs
+[1] (39003) Stopped mystop 10 &
+tsh> jobs
+[1] (39003) Stopped mystop 10 &
+tsh> fg 39003
+tsh> jobs
+tsh> mysplit 10 &
+[1] (39051) mysplit 10 &
+
+tsh> jobs
+[1] (39051) Running mysplit 10 &
+tsh> jobs
+[1] (39051) Running mysplit 10 &
+tsh> jobs
+tsh> jobs
+tsh> mysplit 4
+tsh> jobs
+tsh> mysplit 5
+^C[1] (39065) terminated by signal 2.
+Job [1] (39065) received signal 2.
+tsh> jobs
+tsh> ./test
+./test: command not found
+tsh> tsh> /bin/ls
+makefile  myint.c  myspin.c  mysplit.c	mystop.c  tsh.c
+myint	  myspin   mysplit   mystop	tsh
+tsh> fg a
+fg : a: no such job
+tsh> fg b
+fg : b: no such job
+tsh> fg 99999999
+fg : 99999999: no such job
+tsh> bg a
+bg : a: no such job
+tsh> bg 234214
+bg : 234214: no such job
+tsh> fg %231
+fg : 231: no such job
+tsh> fg %dsfd
+fg : dsfd: no such job
+tsh> ./mysplit 5
+^C[2] (39398) terminated by signal 2.
+Job [2] (39398) received signal 2.
+tsh> /bin/ps a
+'  PID TTY      STAT   TIME COMMAND
+ 1405 ttyS0    Ss+    0:00 /sbin/agetty --keep-baud 115200 38400 9600 ttyS0 vt22
+ 1406 tty1     Ss+    0:00 /sbin/agetty --noclear tty1 linux
+12809 pts/8    Ss+    0:00 -bash
+12822 pts/9    Ss     0:00 -bash
+13622 pts/9    S+     0:00 vim ids
+32914 pts/3    Ss+    0:00 -bash
+33014 pts/0    Ss     0:00 -bash
+33055 pts/0    S+     0:11 vi tsh-ck.c
+34947 pts/6    Ss+    0:00 -bash
+37617 pts/1    Ss     0:00 -bash
+37894 pts/1    T      0:00 make
+37904 pts/1    T      0:00 ./tsh.o
+37913 pts/1    T      0:00 myspin 60
+38086 pts/1    T      0:00 make
+38092 pts/1    T      0:00 ./tsh.o
+38093 pts/1    T      0:00 myspin 60
+38304 pts/1    T      0:00 make
+38312 pts/1    T      0:00 ./tsh.o
+38313 pts/1    T      0:00 myspin 60
+38367 pts/1    T      0:00 make
+38373 pts/1    T      0:00 ./tsh.o
+38461 pts/1    T      0:00 myspin 60
+38492 pts/1    T      0:00 make
+38498 pts/1    T      0:00 ./tsh.o
+38499 pts/1    T      0:00 myspin 60
+38521 pts/4    Ss+    0:00 -bash
+38816 pts/1    S+     0:00 ./tsh
+39254 pts/1    T      0:00 ./tsh
+39400 pts/1    R      0:00 /bin/ps a
+tsh>
