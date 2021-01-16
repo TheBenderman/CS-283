@@ -3,7 +3,7 @@
 
 #define BINARYSIZE 32
 
-// This function converts a base 19 decimal number to it's binary form. This
+// This function converts a base 10 decimal number to it's binary form. This
 // form is then outputted to the screen.
 void convertDecimalToBinary(int decimal){
 	
