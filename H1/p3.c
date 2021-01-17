@@ -1,3 +1,7 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+
 // This function counts the number of bits in a long integer.
 void countNumberOfBits(long int number){
 	//get the memory address of the current number
@@ -24,5 +28,5 @@ int main(int argc, char *argv[]){
 
 	printf("Counting the number of bits in long int: %s\n", argv[1]);
 
-	countNumberOfBits(atol(argv[1]));
+	countNumberOfBits(atoi(argv[1]));
 }
